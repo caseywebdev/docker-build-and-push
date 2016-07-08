@@ -11,6 +11,10 @@ The script requires `curl`, `jq` and `docker` to be available.
 ## Usage
 
 ```bash
-curl -sSL https://github.com/caseywebdev/docker-build-and-push/raw/master/run.sh | \
-  REF=master GITHUB_REPO=user/repo IMAGE_REPO=quay.io/user/repo bash
+curl -sSL \
+  https://github.com/caseywebdev/docker-build-and-push/raw/master/run.sh | \
+  REF=master \
+  GITHUB_REPO=user/repo \
+  IMAGE_REPO=quay.io/user/repo \
+  bash
 ```
