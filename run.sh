@@ -1,3 +1,5 @@
+set -e
+
 SHA=`curl -sSL https://api.github.com/repos/$GITHUB_REPO/commits/$REF | jq -r .sha`
 REPO_URL=https://api.github.com/repos/$GITHUB_REPO/tarball/$SHA
 IMAGE=$IMAGE_REPO:$SHA
