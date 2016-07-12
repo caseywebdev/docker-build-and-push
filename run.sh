@@ -1,7 +1,11 @@
 set -e
 
-SHA=`curl -sSL https://api.github.com/repos/$GITHUB_REPO/commits/$REF | jq -r .sha`
-REPO_URL=https://api.github.com/repos/$GITHUB_REPO/tarball/$SHA
+if [ "$BUILD_AND_PUSH_GITHUB_TOKEN" ]; then
+  Q="?access_token=$BUILD_AND_PUSH_GITHUB_TOKEN"
+fi
+
+SHA=`curl -sSL https://api.github.com/repos/$GITHUB_REPO/commits/$REF$Q | jq -r .sha`
+REPO_URL=https://api.github.com/repos/$GITHUB_REPO/tarball/$SHA$Q
 IMAGE=$IMAGE_REPO:$SHA
 TMP=/tmp/$IMAGE
 
