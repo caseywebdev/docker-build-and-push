@@ -15,19 +15,11 @@ mkdir -p $TMP
 curl -sSL $REPO_URL | tar xz --strip-components 1 -C $TMP
 cd $TMP
 
-echo 'Building:'
-echo $REF_TAG
-echo $SHA_TAG
 docker build -t $REF_TAG -t $SHA_TAG --build-arg VERSION=$SHA .
 
 rm -fr $TMP
 
-echo 'Pushing:'
-echo $REF_TAG
 docker push $REF_TAG
-
-echo 'Pushing:'
-echo $SHA_TAG
 docker push $SHA_TAG
 
 echo 'Successfully built and pushed:'
